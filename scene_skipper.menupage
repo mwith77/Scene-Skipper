@@ -1,0 +1,144 @@
+DefineMenuPage: [SCENE SKIPPER]
+ConfigurationFile: [Scene Skipper\scene_skipper.ini]
+Formula: []
+Content:	{
+				{	ItemType: [Control]
+					ControlTitle: [Enable Scene Skipper]
+					Section: [settings]
+					SettingName: [enable-scene-skipper]
+					ControlType: [Toggle]
+					ToggleDisabledValue: ["OFF" = 0]
+					ToggleEnabledValue: ["ON" = 1]
+					DefaultValue: [1]
+					MarkAsModified: [True]
+					ControlDependency: []
+					ControlDescription:	[
+											Enable or disable the ability to skip additional scenes and cinematics.
+										]
+				}
+				{	ItemType: [Control]
+					ControlTitle: [Skip Button]
+					Section: [settings]
+					SettingName: [skip-button]
+					ControlType: [Keybind]
+					DefaultValue: [0x78]
+					KeybindAllowMenuKeys: [True]
+					KeybindAllowGameplayKeys: [False]
+					MarkAsModified: [True]
+					ControlDependency: [enable-scene-skipper = 1]
+					ControlDependencyDescription:	[
+														To modify this setting, set <b>Enable Scene Skipper</b> to <b>ON</b>.
+													]
+					ControlDescription:	[
+											Set the key used to trigger a skip.
+										]
+				}
+				{	ItemType: [Control]
+					ControlTitle: [Show Skip Prompt]
+					Section: [settings]
+					SettingName: [show-skip-prompt]
+					ControlType: [Toggle]
+					ToggleDisabledValue: ["OFF" = 0]
+					ToggleEnabledValue: ["ON" = 1]
+					DefaultValue: [1]
+					MarkAsModified: [True]
+					ControlDependency: [enable-scene-skipper = 1]
+					ControlDependencyDescription:	[
+														To modify this setting, set <b>Enable Scene Skipper</b> to <b>ON</b>.
+													]
+					ControlDescription:	[
+											Enable or disable the on screen skip prompt. Setting this to <b>OFF</b> does not disable the button, only the prompt.
+										]
+				}
+				{	ItemType: [Control]
+					ControlTitle: [Skip Prompt Corner]
+					Section: [settings]
+					SettingName: [skip-prompt-corner]
+					ControlType: [Selector]
+					SelectorValues: ["Top Left" = 1, "Top Right" = 2, "Bottom Left" = 3, "Bottom Right" = 4]
+					DefaultValue: [3]
+					MarkAsModified: [True]
+					ControlDependency: [enable-scene-skipper = 1 AND show-skip-prompt = 1]
+					ControlDependencyDescription:	[
+														To modify this setting, set <b>Enable Scene Skipper</b> and <b>Show Skip Prompt</b> to <b>ON</b>.
+													]
+					ControlDescription:	[
+											Choose which corner of the screen the skip prompt appears in.
+										]
+				}
+				{	ItemType: [Control]
+					ControlTitle: [Skip Prompt Preset]
+					Section: [settings]
+					SettingName: [skip-prompt-preset]
+					ControlType: [Preset]
+					PresetValues:	[
+										"Subtle" = {skip-prompt-size = 70, skip-prompt-opacity = 20, skip-prompt-duration = 5},
+										"Default" = {skip-prompt-size = 100, skip-prompt-opacity = 60, skip-prompt-duration = 10},
+										"Prominent" = {skip-prompt-size = 130, skip-prompt-opacity = 100, skip-prompt-duration = 31}
+									]
+					DefaultValue: [2]
+					MarkAsModified: [True]
+					ControlDependency: [enable-scene-skipper = 1 AND show-skip-prompt = 1]
+					ControlDependencyDescription:	[
+														To modify this setting, set <b>Enable Scene Skipper</b> and <b>Show Skip Prompt</b> to <b>ON</b>.
+													]
+					ControlDescription:	[
+											Choose a look for the skip prompt: <b>Subtle</b>, <b>Default</b> or <b>Prominent</b> sets its size, opacity and duration together. Changing any of those settings by hand shows <b>Custom</b>, and choosing <b>Custom</b> again puts back the settings you had before choosing a preset.
+										]
+				}
+				{	ItemType: [Control]
+					ControlTitle: [Skip Prompt Size]
+					Section: [settings]
+					SettingName: [skip-prompt-size]
+					ControlType: [Slider]
+					SliderMinValue: [50]
+					SliderMaxValue: [200]
+					SliderStepSize: [10]
+					DefaultValue: [100]
+					MarkAsModified: [True]
+					ControlDependency: [enable-scene-skipper = 1 AND show-skip-prompt = 1]
+					ControlDependencyDescription:	[
+														To modify this setting, set <b>Enable Scene Skipper</b> and <b>Show Skip Prompt</b> to <b>ON</b>.
+													]
+					ControlDescription:	[
+											Set the size of the skip prompt, as a percentage of its normal size.
+										]
+				}
+				{	ItemType: [Control]
+					ControlTitle: [Skip Prompt Opacity]
+					Section: [settings]
+					SettingName: [skip-prompt-opacity]
+					ControlType: [Slider]
+					SliderMinValue: [10]
+					SliderMaxValue: [100]
+					SliderStepSize: [5]
+					DefaultValue: [60]
+					MarkAsModified: [True]
+					ControlDependency: [enable-scene-skipper = 1 AND show-skip-prompt = 1]
+					ControlDependencyDescription:	[
+														To modify this setting, set <b>Enable Scene Skipper</b> and <b>Show Skip Prompt</b> to <b>ON</b>.
+													]
+					ControlDescription:	[
+											Set how opaque the skip prompt is, as a percentage. Lower values make it less prominent.
+										]
+				}
+				{	ItemType: [Control]
+					ControlTitle: [Skip Prompt Duration]
+					Section: [settings]
+					SettingName: [skip-prompt-duration]
+					ControlType: [Slider]
+					SliderMinValue: [0]
+					SliderMaxValue: [31]
+					SliderStepSize: [1]
+					SliderValueText: [IF(VALUE > 30, "Persistent", VALUE)]
+					DefaultValue: [10]
+					MarkAsModified: [True]
+					ControlDependency: [enable-scene-skipper = 1 AND show-skip-prompt = 1]
+					ControlDependencyDescription:	[
+														To modify this setting, set <b>Enable Scene Skipper</b> and <b>Show Skip Prompt</b> to <b>ON</b>.
+													]
+					ControlDescription:	[
+											Set how many seconds the skip prompt stays on screen after it fades in. The skip button still works after the prompt has faded. At <b>0</b> the prompt is never shown; at <b>Persistent</b> it stays on screen for the whole scene.
+										]
+				}
+			}
