@@ -5,8 +5,8 @@
    flag the DLL as a blank-metadata file. */
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION    1,0,0,0
- PRODUCTVERSION 1,0,0,0
+ FILEVERSION    1,1,0,0
+ PRODUCTVERSION 1,1,0,0
  FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
  FILEFLAGS      0x0L
  FILEOS         VOS_NT_WINDOWS32
@@ -19,12 +19,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName",      "mwith77"
             VALUE "FileDescription",  "Scene Skipper"
-            VALUE "FileVersion",      "v1.0.0"
+            VALUE "FileVersion",      "v1.1.0"
             VALUE "InternalName",     "scene_skipper"
             VALUE "LegalCopyright",   "mwith77"
             VALUE "OriginalFilename", "scene_skipper.dll"
             VALUE "ProductName",      "Scene Skipper"
-            VALUE "ProductVersion",   "v1.0.0"
+            VALUE "ProductVersion",   "v1.1.0"
         END
     END
     BLOCK "VarFileInfo"
@@ -32,3 +32,7 @@ BEGIN
         VALUE "Translation", 0x409, 1200
     END
 END
+
+/* The default settings: scene_skipper.ini byte for byte, which
+   writeDefaultSettings in scene_skipper.cpp writes to the mod's folder. */
+DEFAULT_SETTINGS RCDATA "scene_skipper.ini"

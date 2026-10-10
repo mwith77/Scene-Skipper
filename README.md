@@ -1,16 +1,22 @@
 # Scene Skipper
 
-Skips scenes in The Last of Us Part I with one key: the cinematics the game lets
+Skips scenes in The Last of Us Part I and Part II with one key: the cinematics
+the game lets
 the player skip, and scenes it gives no skip for, such as the car ride. While a
 skip is offered, a prompt in a corner of the screen names the key. A skip is
 made the way the pause menu's Skip Cinematic makes one: the game starts the
 section the skip goes to from its checkpoint.
 
-Version 1.0.0, for `tlou-i.exe` 1.1.5.0. It loads through the
-[TLOU Plugin Loader](https://github.com/mwith77/TLOU-Plugin-Loader), and its
-settings appear in the game's menus through the
+Version 1.1.0, for `tlou-i.exe` 1.1.5.0, and `tlou-ii.exe` and `tlou-ii-l.exe`
+1.6.0. It loads through the
+[TLOU Plugin Loader](https://github.com/mwith77/TLOU-Plugin-Loader), version
+1.1.0 or later, and its settings appear in the game's menus through the
 [Mod Menu Framework](https://github.com/mwith77/Mod-Menu-Framework), version
-1.1.0 or later.
+1.2.0 or later.
+
+In Part II the key skips a cinematic wherever the game itself offers Skip
+Cinematic, through the game's own skip, and the prompt shows as in Part I.
+Part I's extra scenes below are Part I's only.
 
 ## What it skips
 
@@ -90,22 +96,22 @@ From the x64 Native Tools Command Prompt for Visual Studio, which provides
 
 Laid out as it goes into the game folder:
 
-    Mods\Scene Skipper\                     the DLL and its ini
+    Mods\Scene Skipper\                     the DLL
     Mods\Mod Menu Framework\Mod Menus\      the Scene Skipper's menupage
 
-It needs the TLOU Plugin Loader, which loads it. With the Mod Menu Framework
-1.1.0 or later its settings show in the game's menus; earlier versions of the
-framework lack controls its page uses. Without the framework the same settings
-are edited in the ini directly.
+At its first start the Scene Skipper writes `scene_skipper.ini` beside its DLL
+where it is missing or empty, and adds any setting it lacks, so updating never
+resets it. It needs the TLOU Plugin Loader, which loads it. With the Mod Menu
+Framework 1.2.0 or later its settings show in the game's menus. Without the
+framework the same settings are edited in the ini directly.
 
-On any build of the game other than 1.1.5.0 the Scene Skipper does nothing, and
-says so in its log.
+On any other build of either game the Scene Skipper does nothing, and says so
+in its log.
 
 Uninstalling is deleting `Mods\Scene Skipper` and the menupage. Nothing in a
 save depends on the Scene Skipper.
 
 ## Logs
 
-The Scene Skipper keeps its log in `Mods\Scene Skipper\Logs` and writes only
-failures and errors. Each log holds one run: at start, the previous run's log is
-moved to `Logs\Archive`.
+The Scene Skipper keeps one log, `Mods\Scene Skipper\scene_skipper.log`,
+newest line first, at most 1 MB, and writes only failures and errors.
